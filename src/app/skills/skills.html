@@ -1,0 +1,43 @@
+<section id="skills" class="skills" #skillsSection>
+    <div class="section-label">
+        <span>02</span>
+        <div class="label-line"></div>
+        <span>Skills</span>
+    </div>
+    <div class="skills-header" [class.visible]="isVisible">
+        <h2 class="section-title">My <em>toolkit</em></h2>
+        <p>Technologies I work with to bring ideas to life</p>
+    </div>
+    <div class="skills-grid">
+        <div class="skill-category" *ngFor="let cat of categories; let i = index"
+            [class.visible]="isVisible"
+            [style.transition-delay]="i * 0.15 + 's'">
+        <div class="category-header">
+            <span class="category-icon">{{ cat.icon }}</span>
+            <span class="category-name">{{ cat.name }}</span>
+        </div>
+        <div class="skill-bars">
+            <div class="skill-bar" *ngFor="let skill of cat.skills; let j = index"
+                [style.animation-delay]="(i * 0.15 + j * 0.1) + 's'">
+            <div class="skill-info">
+                <span class="skill-name">{{ skill.name }}</span>
+                <span class="skill-level">{{ skill.level }}%</span>
+            </div>
+            <div class="bar-track">
+                <div class="bar-fill"
+                    [style.width]="isVisible ? skill.level + '%' : '0%'"
+                    [style.transition-delay]="(0.5 + i * 0.1 + j * 0.08) + 's'">
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="tech-icons" [class.visible]="isVisible">
+        <div class="tech-icon" *ngFor="let tech of techStack; let i = index"
+            [style.animation-delay]="i * 0.06 + 's'">
+        <span class="tech-symbol">{{ tech.symbol }}</span>
+        <span class="tech-name">{{ tech.name }}</span>
+        </div>
+    </div>
+</section>
