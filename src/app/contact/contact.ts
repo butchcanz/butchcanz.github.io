@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-skills',
+  selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './skills.html',
-  styleUrl: './skills.scss',
+  imports: [
+    CommonModule, 
+    FormsModule
+  ],
+  templateUrl: './contact.html',
+  styleUrl: './contact.scss',
 })
-export class Skills {
+export class Contact {
   ngAfterViewInit() {
     const reveals = document.querySelectorAll('.reveal');
 

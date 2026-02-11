@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-skills',
+  selector: 'app-projects',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './skills.html',
-  styleUrl: './skills.scss',
+  templateUrl: './projects.html',
+  styleUrl: './projects.scss',
 })
-export class Skills {
+export class Projects {
   ngAfterViewInit() {
     const reveals = document.querySelectorAll('.reveal');
 

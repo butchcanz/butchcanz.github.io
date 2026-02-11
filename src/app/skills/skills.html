@@ -1,43 +1,102 @@
-<section id="skills" class="skills" #skillsSection>
-    <div class="section-label">
-        <span>02</span>
-        <div class="label-line"></div>
-        <span>Skills</span>
-    </div>
-    <div class="skills-header" [class.visible]="isVisible">
-        <h2 class="section-title">My <em>toolkit</em></h2>
-        <p>Technologies I work with to bring ideas to life</p>
-    </div>
-    <div class="skills-grid">
-        <div class="skill-category" *ngFor="let cat of categories; let i = index"
-            [class.visible]="isVisible"
-            [style.transition-delay]="i * 0.15 + 's'">
-        <div class="category-header">
-            <span class="category-icon">{{ cat.icon }}</span>
-            <span class="category-name">{{ cat.name }}</span>
+<section id="skills" class="skills-section">
+  <div class="skills__header reveal">
+    <span class="section-tag">Expertise</span>
+    <h2 class="section-title">Technical Skills</h2>
+    <p class="section-subtitle">A snapshot of technologies I work with daily and love.</p>
+  </div>
+
+  <div class="skills__grid">
+    <div class="skill-card reveal">
+        <div class="skill-card__icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="skill-tech-icon" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" class="skill-tech-icon" />
         </div>
-        <div class="skill-bars">
-            <div class="skill-bar" *ngFor="let skill of cat.skills; let j = index"
-                [style.animation-delay]="(i * 0.15 + j * 0.1) + 's'">
-            <div class="skill-info">
-                <span class="skill-name">{{ skill.name }}</span>
-                <span class="skill-level">{{ skill.level }}%</span>
-            </div>
-            <div class="bar-track">
-                <div class="bar-fill"
-                    [style.width]="isVisible ? skill.level + '%' : '0%'"
-                    [style.transition-delay]="(0.5 + i * 0.1 + j * 0.08) + 's'">
-                </div>
-            </div>
-            </div>
+        <div class="skill-card__name">Languages</div>
+        <div class="skill-card__desc">
+          Python (scripting, automation, ML-ready) &amp; TypeScript with strict typing, generics, decorators, and advanced patterns.
         </div>
+        <div class="skill-bar">
+          <div class="skill-bar__fill" style="width: 92%"></div>
         </div>
-    </div>
-    <div class="tech-icons" [class.visible]="isVisible">
-        <div class="tech-icon" *ngFor="let tech of techStack; let i = index"
-            [style.animation-delay]="i * 0.06 + 's'">
-        <span class="tech-symbol">{{ tech.symbol }}</span>
-        <span class="tech-name">{{ tech.name }}</span>
+        <div class="skill-bar__label"><span>Expert</span><span>92%</span></div>
+      </div>
+    
+      <div class="skill-card reveal reveal--delay-1">
+        <div class="skill-card__icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" class="skill-tech-icon" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="skill-tech-icon" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="skill-tech-icon skill-tech-icon--invert" />
         </div>
-    </div>
+        <div class="skill-card__name">Frontend Frameworks</div>
+        <div class="skill-card__desc">
+          Angular (Signals, SSR, NgRx), React, Next.js SSR/SSG, and Ionic Angular for cross-platform mobile apps.
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__fill" style="width: 90%"></div>
+        </div>
+        <div class="skill-bar__label"><span>Expert</span><span>90%</span></div>
+      </div>
+    
+      <div class="skill-card reveal reveal--delay-2">
+        <div class="skill-card__icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg" alt="NestJS" class="skill-tech-icon" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI" class="skill-tech-icon" />
+        </div>
+        <div class="skill-card__name">Backend Frameworks</div>
+        <div class="skill-card__desc">
+          NestJS (REST, GraphQL, microservices, WebSockets) &amp; FastAPI (async APIs, Pydantic, OpenAPI). JWT auth &amp; NPM ecosystem.
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__fill" style="width: 87%"></div>
+        </div>
+        <div class="skill-bar__label"><span>Advanced</span><span>87%</span></div>
+      </div>
+    
+      <div class="skill-card reveal reveal--delay-3">
+        <div class="skill-card__icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="skill-tech-icon" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="skill-tech-icon" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg" alt="Prisma" class="skill-tech-icon skill-tech-icon--invert" />
+        </div>
+        <div class="skill-card__name">Databases &amp; ORM</div>
+        <div class="skill-card__desc">
+          MySQL, MongoDB, query optimization, schema design, migrations, and Prisma ORM for type-safe database access.
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__fill" style="width: 82%"></div>
+        </div>
+        <div class="skill-bar__label"><span>Advanced</span><span>82%</span></div>
+      </div>
+    
+      <div class="skill-card reveal">
+        <div class="skill-card__icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="skill-tech-icon" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="skill-tech-icon" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="skill-tech-icon skill-tech-icon--invert" />
+        </div>
+        <div class="skill-card__name">DevOps &amp; Version Control</div>
+        <div class="skill-card__desc">
+          Docker containerization, Git workflows, GitHub Actions CI/CD pipelines for automated testing and deployment.
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__fill" style="width: 78%"></div>
+        </div>
+        <div class="skill-bar__label"><span>Proficient</span><span>78%</span></div>
+      </div>
+    
+      <div class="skill-card reveal reveal--delay-1">
+        <div class="skill-card__icon">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swagger/swagger-original.svg" alt="Swagger" class="skill-tech-icon" />
+          <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman" class="skill-tech-icon" />
+        </div>
+        <div class="skill-card__name">API &amp; Dev Tools</div>
+        <div class="skill-card__desc">
+          Swagger/OpenAPI for API documentation, Postman for testing &amp; automation, JWT-based authentication strategies.
+        </div>
+        <div class="skill-bar">
+          <div class="skill-bar__fill" style="width: 85%"></div>
+        </div>
+        <div class="skill-bar__label"><span>Advanced</span><span>85%</span></div>
+      </div>
+  </div>
 </section>

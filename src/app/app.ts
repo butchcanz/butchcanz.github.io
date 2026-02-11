@@ -1,9 +1,25 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+import { Skills } from './skills/skills';
+import { Projects } from './projects/projects';
+import { Navbar } from './navbar/navbar';
+import { Hero } from './hero/hero';
+import { Contact } from './contact/contact';
+import { About } from './about/about';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [
+    CommonModule,
+    Skills,
+    Projects,
+    Navbar,
+    Hero,
+    Contact,
+    About
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
