@@ -1,0 +1,24 @@
+<section class="py-16 px-6 bg-gray-900" id="contact">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-3xl font-semibold text-white mb-8">Contact</h2>
+    <form class="space-y-6" (submit)="onSubmit($event)" novalidate>
+      <div>
+        <label for="name" class="block text-gray-200">Name</label>
+        <input id="name" name="name" type="text" required class="w-full mt-1 p-2 bg-gray-800 rounded text-white focus:outline-none focus:ring-2 focus:ring-accent" />
+      </div>
+      <div>
+        <label for="email" class="block text-gray-200">Email</label>
+        <input id="email" name="email" type="email" required class="w-full mt-1 p-2 bg-gray-800 rounded text-white focus:outline-none focus:ring-2 focus:ring-accent" />
+      </div>
+      <div>
+        <label for="message" class="block text-gray-200">Message</label>
+        <textarea id="message" name="message" rows="4" required class="w-full mt-1 p-2 bg-gray-800 rounded text-white focus:outline-none focus:ring-2 focus:ring-accent"></textarea>
+      </div>
+      <button type="submit" class="px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition">Send Message</button>
+    </form>
+    <div class="mt-8 flex space-x-4">
+      <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub" class="text-gray-200 hover:text-white">GitHub</a>
+      <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" class="text-gray-200 hover:text-white">LinkedIn</a>
+    </div>
+  </div>
+</section>
