@@ -46,12 +46,12 @@
 
         <!-- CTA Button -->
         <a (click)="scrollTo('contact')" 
-           class="px-4 py-2 rounded-full 
+          class="px-4 py-2 rounded-full 
                   bg-gradient-to-r from-indigo-500 to-cyan-500 
                   hover:from-indigo-400 hover:to-cyan-400 
                   text-sm font-semibold shadow-lg 
-                  transition duration-300 cursor-pointer">
-          Contact
+                  transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+          Contact Me
         </a>
       </div>
     </div>
@@ -60,32 +60,29 @@
   <!-- Mobile Dropdown -->
   <div 
     [class.hidden]="!menuOpen()"
-    class="sm:hidden bg-gray-950/95 backdrop-blur-xl border-t border-white/5">
-    <div class="flex flex-col space-y-4 px-6 py-6 text-sm font-medium">
+    class="sm:hidden bg-gray-950/95 backdrop-blur-xl border-t border-white/5 flex flex-col items-center justify-center text-center py-8 space-y-6">
+    
+    <!-- Menu Links -->
+    <a (click)="scrollTo('hero')" class="hover:text-indigo-400 transition cursor-pointer text-lg font-medium">
+      Home
+    </a>
+    <a (click)="scrollTo('about')" class="hover:text-indigo-400 transition cursor-pointer text-lg font-medium">
+      About
+    </a>
+    <a (click)="scrollTo('tech-stack')" class="hover:text-indigo-400 transition cursor-pointer text-lg font-medium">
+      Tech Stack
+    </a>
+    <a (click)="scrollTo('projects')" class="hover:text-indigo-400 transition cursor-pointer text-lg font-medium">
+      Projects
+    </a>
+    <a (click)="scrollTo('services')" class="hover:text-indigo-400 transition cursor-pointer text-lg font-medium">
+      Services
+    </a>
 
-      <a (click)="scrollTo('hero')" class="hover:text-indigo-400 transition cursor-pointer">
-        Home
-      </a>
-      <a (click)="scrollTo('about')" class="hover:text-indigo-400 transition cursor-pointer">
-        About
-      </a>
-      <a (click)="scrollTo('tech-stack')" class="hover:text-indigo-400 transition cursor-pointer">
-        Tech Stack
-      </a>
-      <a (click)="scrollTo('projects')" class="hover:text-indigo-400 transition cursor-pointer">
-        Projects
-      </a>
-      <a (click)="scrollTo('services')" class="hover:text-indigo-400 transition cursor-pointer">
-        Services
-      </a>
-
-      <a (click)="scrollTo('contact')" 
-         class="mt-4 text-center px-4 py-2 rounded-full 
-                bg-gradient-to-r from-indigo-500 to-cyan-500 
-                hover:from-indigo-400 hover:to-cyan-400 
-                font-semibold shadow-lg transition cursor-pointer">
-        Contact Me
-      </a>
-    </div>
+    <!-- CTA Button -->
+    <a (click)="scrollTo('contact')" 
+      class="mt-4 px-6 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-400 hover:to-cyan-400 text-white font-semibold shadow-lg transition duration-300 cursor-pointer">
+      Contact Me
+    </a>
   </div>
 </nav>

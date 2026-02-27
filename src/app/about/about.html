@@ -1,8 +1,71 @@
-<section class="py-16 bg-gray-900 px-6" id="about">
-  <div class="max-w-3xl mx-auto text-gray-200 space-y-6">
-    <h2 class="text-3xl font-semibold text-white mb-4">About Me</h2>
-    <p>I am a software engineer with extensive experience in backend development, frontend development, mobile application development, AI solutions, and modern web technologies. I design and build scalable, secure systems that enhance user experiences and support sustainable business growth.</p>
-    <p>My AI experience includes developing and integrating large language models such as OpenAI and Meta LLaMA. I have strong server-side development expertise, including REST API design, authentication and authorization, and NoSQL database management, with a consistent focus on performance, security, and scalability.</p>
-    <p>In addition, I bring solid frontend development experience, building SME web applications with clean, intuitive, and user-friendly interfaces. I also have hands-on experience in mobile development, particularly in designing and decentralizing mobile wallet and Web3 applications. This includes implementing secure mobile wallets with biometric authentication, facial recognition, PIN-based access, and reliable transaction processing.</p>
+<section 
+  id="about"
+  class="relative py-24 px-6 bg-gray-950 overflow-hidden">
+
+  <!-- Background Glow -->
+  <div class="absolute -top-20 -left-20 w-72 h-72 
+              bg-indigo-500/10 blur-3xl rounded-full">
+  </div>
+
+  <div class="relative max-w-4xl mx-auto">
+
+    <!-- Section Header -->
+    <div 
+      [class.opacity-0]="!visible()"
+      [class.translate-y-10]="!visible()"
+      class="transition-all duration-1000 ease-out">
+
+      <h2 class="text-4xl sm:text-5xl font-bold text-white text-center mb-6">
+        About <span class="bg-gradient-to-r from-indigo-500 to-cyan-500 bg-clip-text text-transparent">Me</span>
+      </h2>
+
+      <div class="w-20 h-1 mx-auto mb-12 
+                  bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-full">
+      </div>
+
+    </div>
+
+    <!-- Content Card -->
+    <div 
+      [class.opacity-0]="!visible()"
+      [class.translate-y-10]="!visible()"
+      class="bg-white/5 backdrop-blur-lg border border-white/10 
+             rounded-2xl p-8 sm:p-12 
+             text-gray-300 leading-relaxed space-y-6
+             transition-all duration-1000 delay-200">
+
+      <p class="text-lg">
+        I am a software engineer with extensive experience in 
+        <span class="text-white font-semibold">backend development</span>, 
+        <span class="text-white font-semibold">frontend development</span>, 
+        <span class="text-white font-semibold">mobile application development</span>, 
+        <span class="text-indigo-400 font-semibold">AI solutions</span>, 
+        and modern web technologies.
+      </p>
+
+      <p>
+        I design and build 
+        <span class="text-cyan-400 font-semibold">scalable</span>, 
+        <span class="text-cyan-400 font-semibold">secure systems</span> 
+        that enhance user experiences and support sustainable business growth.
+      </p>
+
+      <p>
+        My AI experience includes developing and integrating large language models such as OpenAI and Meta LLaMA. 
+        I specialize in 
+        <span class="text-white font-semibold">REST API architecture</span>, 
+        authentication & authorization, and NoSQL database management 
+        with a strong focus on performance, security, and scalability.
+      </p>
+
+      <p>
+        I also design and decentralize 
+        <span class="text-indigo-400 font-semibold">mobile wallet & Web3 applications</span>, 
+        implementing biometric authentication, facial recognition, 
+        PIN-based access, and secure transaction processing.
+      </p>
+
+    </div>
+
   </div>
 </section>

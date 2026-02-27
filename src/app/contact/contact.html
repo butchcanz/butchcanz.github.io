@@ -1,24 +1,85 @@
-<section class="py-16 px-6 bg-gray-900" id="contact">
-  <div class="max-w-3xl mx-auto">
-    <h2 class="text-3xl font-semibold text-white mb-8">Contact</h2>
-    <form class="space-y-6" (submit)="onSubmit($event)" novalidate>
-      <div>
-        <label for="name" class="block text-gray-200">Name</label>
-        <input id="name" name="name" type="text" required class="w-full mt-1 p-2 bg-gray-800 rounded text-white focus:outline-none focus:ring-2 focus:ring-accent" />
-      </div>
-      <div>
-        <label for="email" class="block text-gray-200">Email</label>
-        <input id="email" name="email" type="email" required class="w-full mt-1 p-2 bg-gray-800 rounded text-white focus:outline-none focus:ring-2 focus:ring-accent" />
-      </div>
-      <div>
-        <label for="message" class="block text-gray-200">Message</label>
-        <textarea id="message" name="message" rows="4" required class="w-full mt-1 p-2 bg-gray-800 rounded text-white focus:outline-none focus:ring-2 focus:ring-accent"></textarea>
-      </div>
-      <button type="submit" class="px-6 py-3 bg-accent text-white rounded-md hover:bg-accent/90 transition">Send Message</button>
-    </form>
-    <div class="mt-8 flex space-x-4">
-      <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub" class="text-gray-200 hover:text-white">GitHub</a>
-      <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" class="text-gray-200 hover:text-white">LinkedIn</a>
+<section id="contact" class="relative py-24 px-6 bg-gray-950 overflow-hidden">
+
+  <!-- Soft Background Glow -->
+  <div class="absolute -top-24 -right-24 w-[400px] h-[400px] 
+              bg-gradient-to-r from-indigo-500/10 to-cyan-500/10 
+              blur-[150px] rounded-full animate-pulse-slow"></div>
+
+  <div class="relative max-w-3xl mx-auto">
+
+    <!-- Section Header -->
+    <div 
+      [class.opacity-0]="!visible()"
+      [class.translate-y-10]="!visible()"
+      class="transition-all duration-1000 ease-out text-center mb-12">
+
+      <h2 class="text-4xl sm:text-5xl font-bold text-white">
+        Get in <span class="bg-gradient-to-r from-indigo-500 to-cyan-500 bg-clip-text text-transparent">Touch</span>
+      </h2>
+      <p class="mt-4 text-gray-300">Feel free to reach out for collaborations or just a friendly hello 👋</p>
     </div>
+
+    <!-- Contact Form -->
+    <form 
+      (submit)="onSubmit($event)" 
+      novalidate
+      [class.opacity-0]="!visible()"
+      [class.translate-y-10]="!visible()"
+      class="transition-all duration-1000 delay-200 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 space-y-6 shadow-lg">
+
+      <div>
+        <label for="name" class="block text-gray-200 mb-1">Name</label>
+        <input id="name" name="name" type="text" required
+               class="w-full p-3 bg-gray-800 rounded-lg text-white placeholder-gray-400
+                      focus:outline-none focus:ring-2 focus:ring-accent 
+                      transition duration-300 hover:ring-accent/50" />
+      </div>
+
+      <div>
+        <label for="email" class="block text-gray-200 mb-1">Email</label>
+        <input id="email" name="email" type="email" required
+               class="w-full p-3 bg-gray-800 rounded-lg text-white placeholder-gray-400
+                      focus:outline-none focus:ring-2 focus:ring-accent 
+                      transition duration-300 hover:ring-accent/50" />
+      </div>
+
+      <div>
+        <label for="message" class="block text-gray-200 mb-1">Message</label>
+        <textarea id="message" name="message" rows="5" required
+                  class="w-full p-3 bg-gray-800 rounded-lg text-white placeholder-gray-400
+                         focus:outline-none focus:ring-2 focus:ring-accent 
+                         transition duration-300 hover:ring-accent/50"></textarea>
+      </div>
+
+      <button type="submit"
+              class="w-full py-3 px-6 bg-gradient-to-r from-indigo-500 to-cyan-500
+                     text-white font-semibold rounded-xl shadow-md
+                     hover:from-indigo-600 hover:to-cyan-600 
+                     transition-all duration-300 transform hover:scale-105">
+        Send Message
+      </button>
+
+    </form>
+
+    <!-- Social Links -->
+    <div 
+      [class.opacity-0]="!visible()"
+      [class.translate-y-10]="!visible()"
+      class="transition-all duration-1000 delay-400 mt-8 flex justify-center gap-6">
+
+      <a href="https://github.com/butchcanz" target="_blank" rel="noopener"
+         class="bg-white/10 hover:bg-white/20 text-gray-200 p-3 rounded-full 
+                transition transform hover:scale-110 shadow-sm">
+        <img src="assets/logos/github-white-icon.png" alt="GitHub" class="w-6 h-6"/>
+      </a>
+
+      <a href="https://www.linkedin.com/in/butch-ca%C3%B1ada-b87b15117/" target="_blank" rel="noopener"
+         class="bg-white/10 hover:bg-white/20 text-gray-200 p-3 rounded-full 
+                transition transform hover:scale-110 shadow-sm">
+        <img src="assets/logos/linkedin.png" alt="LinkedIn" class="w-6 h-6"/>
+      </a>
+
+    </div>
+
   </div>
 </section>

@@ -4,7 +4,9 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule],
+  imports: [
+    RouterModule, 
+  ],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css'],
   host: {
@@ -12,17 +14,23 @@ import { RouterModule } from '@angular/router';
   },
 })
 export class Navbar {
-  menuOpen = signal(false);
+
+  menuOpenValue = false;
 
   toggle() {
-    this.menuOpen.update(v => !v);
+    this.menuOpenValue = !this.menuOpenValue;
   }
+
+  menuOpen() {
+    return this.menuOpenValue;
+  }
+
 
   scrollTo(id: string) {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
-    this.menuOpen.set(false);
+    this.menuOpenValue = false;
   }
 }
