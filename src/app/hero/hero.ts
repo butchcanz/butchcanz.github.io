@@ -1,25 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
+import { PortfolioService } from '../services/portfolio.service';
+import { StatCounter } from '../components/stat-counter/stat-counter';
 
 @Component({
   selector: 'app-hero',
-  standalone: true,
-  imports: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgOptimizedImage, StatCounter],
   templateUrl: './hero.html',
-  styleUrls: ['./hero.css'],
 })
 export class Hero implements OnInit {
-  greeting: string = '';
+  private readonly portfolio = inject(PortfolioService);
 
-  tags = [
-    'Angular', 'React', 'Node.js', 'TypeScript',
-    'AI/ML', 'Web3', 'Solidity', 'AWS',
-  ];
+  readonly personal = this.portfolio.personal;
+  readonly stats = this.portfolio.stats;
+  readonly greeting = signal('');
 
   ngOnInit(): void {
     const h = new Date().getHours();
-    this.greeting = h < 12 ? 'Good Morning' : h < 18 ? 'Good Afternoon' : 'Good Evening';
+    this.greeting.set(
+      h < 12 ? 'Good Morning' : h < 18 ? 'Good Afternoon' : 'Good Evening',
+    );
   }
-
 }
-
-

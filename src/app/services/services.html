@@ -1,91 +1,50 @@
-<section class="py-24 px-6 bg-gray-950 relative overflow-hidden" id="services">
-
-  <!-- Soft Background Glow -->
-  <div class="absolute -top-20 -left-20 w-[400px] h-[400px] 
-              bg-gradient-to-r from-indigo-500/10 to-cyan-500/10 
-              blur-[150px] rounded-full animate-pulse-slow"></div>
+<section
+  id="services"
+  class="py-20 md:py-28 px-4 sm:px-6 bg-white dark:bg-gray-950 relative overflow-hidden"
+>
+  <div
+    class="absolute -top-20 -left-20 w-[400px] h-[400px]
+           bg-gradient-to-r from-indigo-500/10 to-cyan-500/10 blur-[150px] rounded-full animate-pulse-slow"
+    aria-hidden="true"
+  ></div>
 
   <div class="relative max-w-6xl mx-auto">
-
-    <!-- Section Header -->
-    <div 
-      [class.opacity-0]="!visible()"
-      [class.translate-y-10]="!visible()"
-      class="transition-all duration-1000 ease-out text-center mb-16">
-
-      <h2 class="text-4xl sm:text-5xl font-bold text-white">
-        My <span class="bg-gradient-to-r from-indigo-500 to-cyan-500 bg-clip-text text-transparent">Services</span>
-      </h2>
-      <div class="w-24 h-1 mx-auto mt-6 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-full"></div>
+    <div appScrollReveal>
+      <app-section-header
+        title="My "
+        highlight="Services"
+        subtitle="Solutions tailored to your business needs"
+      />
     </div>
 
-    <!-- Services Grid -->
-    <div 
-      [class.opacity-0]="!visible()"
-      [class.translate-y-10]="!visible()"
-      class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 transition-all duration-1000 delay-200">
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      @for (service of services; track service.title; let i = $index) {
+        <div
+          appScrollReveal
+          [delay]="i * 80"
+          class="group relative bg-white/70 dark:bg-white/5 backdrop-blur-xl
+                 border border-gray-200/80 dark:border-white/10
+                 rounded-2xl p-8 text-center transition transform duration-500
+                 hover:-translate-y-3 hover:shadow-2xl hover:shadow-indigo-500/10
+                 hover:border-indigo-500/30"
+        >
+          <div
+            class="mx-auto mb-6 h-16 w-16 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500
+                   flex items-center justify-center text-2xl shadow-md
+                   group-hover:scale-110 transition-transform duration-300"
+            aria-hidden="true"
+          >
+            {{ service.icon }}
+          </div>
 
-      <!-- Service Card -->
-      <div class="group relative bg-white/5 backdrop-blur-xl border border-white/10 
-                  rounded-2xl p-8 text-center transition transform duration-500 
-                  hover:-translate-y-3 hover:shadow-2xl hover:shadow-indigo-500/20">
-
-        <!-- Icon Circle with Gradient Animation -->
-        <div class="mx-auto mb-6 h-16 w-16 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 
-                    flex items-center justify-center text-white text-2xl font-bold 
-                    animate-pulse-slow shadow-md">
-          🖥️
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+            {{ service.title }}
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+            {{ service.description }}
+          </p>
         </div>
-
-        <h3 class="text-xl font-semibold text-white mb-2">Backend Engineering</h3>
-        <p class="text-gray-300 text-sm leading-relaxed">Building scalable, secure server-side systems and APIs.</p>
-      </div>
-
-      <!-- Frontend -->
-      <div class="group relative bg-white/5 backdrop-blur-xl border border-white/10 
-                  rounded-2xl p-8 text-center transition transform duration-500 
-                  hover:-translate-y-3 hover:shadow-2xl hover:shadow-cyan-500/20">
-
-        <div class="mx-auto mb-6 h-16 w-16 rounded-full bg-gradient-to-r from-cyan-500 to-indigo-500 
-                    flex items-center justify-center text-white text-2xl font-bold 
-                    animate-pulse-slow shadow-md">
-          🎨
-        </div>
-
-        <h3 class="text-xl font-semibold text-white mb-2">Frontend Development</h3>
-        <p class="text-gray-300 text-sm leading-relaxed">Crafting clean, intuitive interfaces with modern frameworks.</p>
-      </div>
-
-      <!-- AI Integration -->
-      <div class="group relative bg-white/5 backdrop-blur-xl border border-white/10 
-                  rounded-2xl p-8 text-center transition transform duration-500 
-                  hover:-translate-y-3 hover:shadow-2xl hover:shadow-purple-500/20">
-
-        <div class="mx-auto mb-6 h-16 w-16 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 
-                    flex items-center justify-center text-white text-2xl font-bold 
-                    animate-pulse-slow shadow-md">
-          🤖
-        </div>
-
-        <h3 class="text-xl font-semibold text-white mb-2">AI Integration</h3>
-        <p class="text-gray-300 text-sm leading-relaxed">Embedding intelligent features using LLMs and ML models.</p>
-      </div>
-
-      <!-- Mobile & Web3 -->
-      <div class="group relative bg-white/5 backdrop-blur-xl border border-white/10 
-                  rounded-2xl p-8 text-center transition transform duration-500 
-                  hover:-translate-y-3 hover:shadow-2xl hover:shadow-green-500/20">
-
-        <div class="mx-auto mb-6 h-16 w-16 rounded-full bg-gradient-to-r from-green-500 to-cyan-500 
-                    flex items-center justify-center text-white text-2xl font-bold 
-                    animate-pulse-slow shadow-md">
-          📱
-        </div>
-
-        <h3 class="text-xl font-semibold text-white mb-2">Mobile & Web3 Dev</h3>
-        <p class="text-gray-300 text-sm leading-relaxed">Secure wallets, Web3 applications, and mobile architecture.</p>
-      </div>
-
+      }
     </div>
   </div>
 </section>

@@ -1,24 +1,16 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { SectionHeader } from '../components/section-header/section-header';
+import { ScrollRevealDirective } from '../directives/scroll-reveal.directive';
+import { PortfolioService } from '../services/portfolio.service';
 
 @Component({
   selector: 'app-services',
-  standalone: true,
-  imports: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [SectionHeader, ScrollRevealDirective],
   templateUrl: './services.html',
-  styleUrls: ['./services.css'],
 })
 export class Services {
+  private readonly portfolio = inject(PortfolioService);
 
-  visible = signal(false);
-
-  @HostListener('window:scroll', [])
-  onScroll() {
-    const element = document.getElementById('projects');
-    if (!element) return;
-
-    const rect = element.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
-      this.visible.set(true);
-    }
-  }
+  readonly services = this.portfolio.services;
 }

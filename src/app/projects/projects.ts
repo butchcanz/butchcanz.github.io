@@ -1,24 +1,29 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { SectionHeader } from '../components/section-header/section-header';
+import { ScrollRevealDirective } from '../directives/scroll-reveal.directive';
+import { PortfolioService } from '../services/portfolio.service';
 
 @Component({
   selector: 'app-projects',
-  standalone: true,
-  imports: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgOptimizedImage, SectionHeader, ScrollRevealDirective],
   templateUrl: './projects.html',
-  styleUrls: ['./projects.css'],
 })
 export class Projects {
+  private readonly portfolio = inject(PortfolioService);
 
-  visible = signal(false);
+  readonly allProjects = this.portfolio.projects;
+  readonly technologies = ['All', ...this.portfolio.getAllTechnologies()];
+  readonly activeFilter = signal('All');
 
-  @HostListener('window:scroll', [])
-  onScroll() {
-    const element = document.getElementById('projects');
-    if (!element) return;
+  readonly filteredProjects = computed(() => {
+    const filter = this.activeFilter();
+    if (filter === 'All') return this.allProjects;
+    return this.allProjects.filter((p) => p.technologies.includes(filter));
+  });
 
-    const rect = element.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
-      this.visible.set(true);
-    }
+  setFilter(tech: string): void {
+    this.activeFilter.set(tech);
   }
 }

@@ -1,88 +1,122 @@
-<nav class="fixed top-0 left-0 w-full z-50 bg-gray-950/80 backdrop-blur-xl border-b border-white/5 text-white">
+<nav
+  class="bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl border-b border-gray-200/60 dark:border-white/5
+         text-gray-900 dark:text-white"
+  aria-label="Main navigation"
+>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
-
       <!-- Logo / Brand -->
-      <a 
-        (click)="scrollTo('hero')" 
-        class="text-lg sm:text-xl font-semibold tracking-wide cursor-pointer 
-               bg-gradient-to-r from-indigo-400 to-cyan-400 
-               bg-clip-text text-transparent hover:opacity-80 transition">
-        Butch D. Cañada
-      </a>
-
-      <!-- Mobile Toggle -->
-      <button 
-        (click)="toggle()" 
-        aria-label="Toggle menu" 
-        class="sm:hidden p-2 rounded-md hover:bg-white/10 transition focus:outline-none focus:ring-2 focus:ring-indigo-500">
-        <span class="text-2xl">
-          {{ menuOpen() ? '✕' : '☰' }}
-        </span>
+      <button
+        type="button"
+        (click)="scrollTo('hero')"
+        class="text-lg sm:text-xl font-semibold tracking-wide cursor-pointer
+               bg-gradient-to-r from-indigo-500 to-cyan-500
+               bg-clip-text text-transparent hover:opacity-80 transition
+               focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded"
+      >
+        {{ personal.name }}
       </button>
 
       <!-- Desktop Menu -->
-      <div class="hidden sm:flex items-center space-x-8 text-sm font-medium">
-        <a (click)="scrollTo('hero')" 
-           class="hover:text-indigo-400 transition duration-300 cursor-pointer">
-          Home
-        </a>
-        <a (click)="scrollTo('about')" 
-           class="hover:text-indigo-400 transition duration-300 cursor-pointer">
-          About
-        </a>
-        <a (click)="scrollTo('tech-stack')" 
-           class="hover:text-indigo-400 transition duration-300 cursor-pointer">
-          Tech Stack
-        </a>
-        <a (click)="scrollTo('projects')" 
-           class="hover:text-indigo-400 transition duration-300 cursor-pointer">
-          Projects
-        </a>
-        <a (click)="scrollTo('services')" 
-           class="hover:text-indigo-400 transition duration-300 cursor-pointer">
-          Services
-        </a>
+      <div class="hidden sm:flex items-center space-x-5 text-sm font-medium">
+        @for (link of navLinks; track link.sectionId) {
+          @if (link.sectionId !== 'hero') {
+            <button
+              type="button"
+              (click)="scrollTo(link.sectionId)"
+              class="hover:text-indigo-500 dark:hover:text-indigo-400 transition duration-300 cursor-pointer
+                     focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded"
+            >
+              {{ link.label }}
+            </button>
+          }
+        }
 
-        <!-- CTA Button -->
-        <a (click)="scrollTo('contact')" 
-          class="px-4 py-2 rounded-full 
-                  bg-gradient-to-r from-indigo-500 to-cyan-500 
-                  hover:from-indigo-400 hover:to-cyan-400 
-                  text-sm font-semibold shadow-lg 
-                  transform transition duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+        <button
+          type="button"
+          (click)="toggleTheme()"
+          [attr.aria-label]="isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition
+                 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+        >
+          @if (isDark()) {
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          } @else {
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          }
+        </button>
+
+        <button
+          type="button"
+          (click)="scrollTo('contact')"
+          class="px-4 py-2 rounded-full
+                 bg-gradient-to-r from-indigo-500 to-cyan-500
+                 hover:from-indigo-400 hover:to-cyan-400 text-white
+                 text-sm font-semibold shadow-lg
+                 transform transition duration-300 hover:scale-105 cursor-pointer
+                 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+        >
           Contact Me
-        </a>
+        </button>
+      </div>
+
+      <!-- Mobile controls -->
+      <div class="flex sm:hidden items-center gap-2">
+        <button
+          type="button"
+          (click)="toggleTheme()"
+          [attr.aria-label]="isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition
+                 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+        >
+          @if (isDark()) {
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          } @else {
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          }
+        </button>
+
+        <button
+          type="button"
+          (click)="toggle()"
+          [attr.aria-expanded]="menuOpen()"
+          aria-controls="mobile-menu"
+          aria-label="Toggle menu"
+          class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-white/10 transition
+                 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+        >
+          <span class="text-xl" aria-hidden="true">{{ menuOpen() ? '✕' : '☰' }}</span>
+        </button>
       </div>
     </div>
   </div>
 
   <!-- Mobile Dropdown -->
-  <div 
-    [class.hidden]="!menuOpen()"
-    class="sm:hidden bg-gray-950/95 backdrop-blur-xl border-t border-white/5 flex flex-col items-center justify-center text-center py-8 space-y-6">
-    
-    <!-- Menu Links -->
-    <a (click)="scrollTo('hero')" class="hover:text-indigo-400 transition cursor-pointer text-lg font-medium">
-      Home
-    </a>
-    <a (click)="scrollTo('about')" class="hover:text-indigo-400 transition cursor-pointer text-lg font-medium">
-      About
-    </a>
-    <a (click)="scrollTo('tech-stack')" class="hover:text-indigo-400 transition cursor-pointer text-lg font-medium">
-      Tech Stack
-    </a>
-    <a (click)="scrollTo('projects')" class="hover:text-indigo-400 transition cursor-pointer text-lg font-medium">
-      Projects
-    </a>
-    <a (click)="scrollTo('services')" class="hover:text-indigo-400 transition cursor-pointer text-lg font-medium">
-      Services
-    </a>
-
-    <!-- CTA Button -->
-    <a (click)="scrollTo('contact')" 
-      class="mt-4 px-6 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 hover:from-indigo-400 hover:to-cyan-400 text-white font-semibold shadow-lg transition duration-300 cursor-pointer">
-      Contact Me
-    </a>
-  </div>
+  @if (menuOpen()) {
+    <div
+      id="mobile-menu"
+      class="sm:hidden bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl
+             border-t border-gray-200 dark:border-white/5
+             flex flex-col items-center py-6 space-y-4"
+    >
+      @for (link of navLinks; track link.sectionId) {
+        <button
+          type="button"
+          (click)="scrollTo(link.sectionId)"
+          class="hover:text-indigo-500 transition cursor-pointer text-lg font-medium
+                 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded px-4 py-1"
+        >
+          {{ link.label }}
+        </button>
+      }
+    </div>
+  }
 </nav>

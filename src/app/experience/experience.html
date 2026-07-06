@@ -1,0 +1,87 @@
+<section
+  id="experience"
+  class="relative py-20 md:py-28 px-4 sm:px-6 bg-white dark:bg-gray-950 overflow-hidden"
+>
+  <div
+    class="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 blur-3xl rounded-full"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative max-w-4xl mx-auto">
+    <div appScrollReveal>
+      <app-section-header
+        title="Work "
+        highlight="Experience"
+        subtitle="My professional journey"
+      />
+    </div>
+
+    <div class="relative">
+      <!-- Timeline line -->
+      <div
+        class="absolute left-4 sm:left-8 top-0 bottom-0 w-0.5
+               bg-gradient-to-b from-indigo-500 to-cyan-500"
+        aria-hidden="true"
+      ></div>
+
+      <div class="space-y-8">
+        @for (exp of experiences; track exp.company + exp.startDate; let i = $index) {
+          <div appScrollReveal [delay]="i * 120" class="relative pl-12 sm:pl-20">
+            <!-- Timeline dot -->
+            <div
+              class="absolute left-2.5 sm:left-6 top-6 w-3 h-3 rounded-full
+                     bg-gradient-to-r from-indigo-500 to-cyan-500
+                     ring-4 ring-white dark:ring-gray-950"
+              aria-hidden="true"
+            ></div>
+
+            <div
+              class="bg-white/70 dark:bg-white/5 backdrop-blur-lg
+                     border border-gray-200/80 dark:border-white/10
+                     rounded-2xl p-6 sm:p-8
+                     transition duration-500 hover:border-indigo-500/30
+                     hover:shadow-lg hover:shadow-indigo-500/5"
+            >
+              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+                <div>
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    {{ exp.position }}
+                  </h3>
+                  <p class="text-indigo-500 dark:text-indigo-400 font-medium">
+                    {{ exp.company }}
+                  </p>
+                </div>
+                <time
+                  class="text-sm text-gray-500 dark:text-gray-400 font-medium
+                         px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 whitespace-nowrap"
+                >
+                  {{ exp.startDate }} — {{ exp.endDate }}
+                </time>
+              </div>
+
+              <ul class="space-y-2 mb-4" role="list">
+                @for (item of exp.responsibilities; track item) {
+                  <li class="text-sm text-gray-600 dark:text-gray-300 flex items-start gap-2">
+                    <span class="text-cyan-500 mt-1 shrink-0" aria-hidden="true">▸</span>
+                    {{ item }}
+                  </li>
+                }
+              </ul>
+
+              <div class="flex flex-wrap gap-2">
+                @for (tech of exp.technologies; track tech) {
+                  <span
+                    class="px-2.5 py-0.5 text-xs rounded-full
+                           bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300"
+                  >
+                    {{ tech }}
+                  </span>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

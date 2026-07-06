@@ -1,85 +1,182 @@
-<section id="contact" class="relative py-24 px-6 bg-gray-950 overflow-hidden">
+<section
+  id="contact"
+  class="relative py-20 md:py-28 px-4 sm:px-6 bg-gray-50 dark:bg-gray-950 overflow-hidden"
+>
+  <div
+    class="absolute -top-24 -right-24 w-[400px] h-[400px]
+           bg-gradient-to-r from-indigo-500/10 to-cyan-500/10 blur-[150px] rounded-full animate-pulse-slow"
+    aria-hidden="true"
+  ></div>
 
-  <!-- Soft Background Glow -->
-  <div class="absolute -top-24 -right-24 w-[400px] h-[400px] 
-              bg-gradient-to-r from-indigo-500/10 to-cyan-500/10 
-              blur-[150px] rounded-full animate-pulse-slow"></div>
-
-  <div class="relative max-w-3xl mx-auto">
-
-    <!-- Section Header -->
-    <div 
-      [class.opacity-0]="!visible()"
-      [class.translate-y-10]="!visible()"
-      class="transition-all duration-1000 ease-out text-center mb-12">
-
-      <h2 class="text-4xl sm:text-5xl font-bold text-white">
-        Get in <span class="bg-gradient-to-r from-indigo-500 to-cyan-500 bg-clip-text text-transparent">Touch</span>
-      </h2>
-      <p class="mt-4 text-gray-300">Feel free to reach out for collaborations or just a friendly hello 👋</p>
+  <div class="relative max-w-5xl mx-auto">
+    <div appScrollReveal>
+      <app-section-header
+        title="Get in "
+        highlight="Touch"
+        subtitle="Feel free to reach out for collaborations or just a friendly hello"
+      />
     </div>
 
-    <!-- Contact Form -->
-    <form 
-      (submit)="onSubmit($event)" 
-      novalidate
-      [class.opacity-0]="!visible()"
-      [class.translate-y-10]="!visible()"
-      class="transition-all duration-1000 delay-200 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 space-y-6 shadow-lg">
+    <div class="grid lg:grid-cols-5 gap-8">
+      <!-- Contact Info -->
+      <div appScrollReveal [delay]="100" class="lg:col-span-2 space-y-6">
+        <div
+          class="bg-white/70 dark:bg-white/5 backdrop-blur-xl
+                 border border-gray-200/80 dark:border-white/10
+                 rounded-2xl p-6 space-y-5"
+        >
+          <div>
+            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">
+              Email
+            </h3>
+            <a
+              [href]="'mailto:' + personal.email"
+              class="text-gray-900 dark:text-white hover:text-indigo-500 transition"
+            >
+              {{ personal.email }}
+            </a>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">
+              Phone
+            </h3>
+            <a
+              [href]="'tel:' + personal.phone"
+              class="text-gray-900 dark:text-white hover:text-indigo-500 transition"
+            >
+              {{ personal.phone }}
+            </a>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">
+              Location
+            </h3>
+            <p class="text-gray-900 dark:text-white">{{ personal.location }}</p>
+          </div>
+        </div>
 
-      <div>
-        <label for="name" class="block text-gray-200 mb-1">Name</label>
-        <input id="name" name="name" type="text" required
-               class="w-full p-3 bg-gray-800 rounded-lg text-white placeholder-gray-400
-                      focus:outline-none focus:ring-2 focus:ring-accent 
-                      transition duration-300 hover:ring-accent/50" />
+        <!-- Social Links -->
+        <div class="flex gap-4">
+          @for (social of socialLinks; track social.name) {
+            <a
+              [href]="social.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="social.name"
+              class="p-3 rounded-full bg-white/70 dark:bg-white/10
+                     border border-gray-200 dark:border-white/10
+                     hover:bg-gray-100 dark:hover:bg-white/20 transition transform hover:scale-110
+                     focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+            >
+              <app-themed-logo
+                [light]="social.icon"
+                [dark]="social.iconDark"
+                [size]="24"
+                imgClass="w-6 h-6"
+              />
+            </a>
+          }
+        </div>
       </div>
 
-      <div>
-        <label for="email" class="block text-gray-200 mb-1">Email</label>
-        <input id="email" name="email" type="email" required
-               class="w-full p-3 bg-gray-800 rounded-lg text-white placeholder-gray-400
-                      focus:outline-none focus:ring-2 focus:ring-accent 
-                      transition duration-300 hover:ring-accent/50" />
-      </div>
+      <!-- Contact Form -->
+      <form
+        appScrollReveal
+        [delay]="200"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        novalidate
+        class="lg:col-span-3 bg-white/70 dark:bg-white/5 backdrop-blur-xl
+               border border-gray-200/80 dark:border-white/10
+               rounded-2xl p-6 sm:p-8 space-y-5 shadow-lg"
+      >
+        @if (submitted()) {
+          <div
+            role="status"
+            class="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm"
+          >
+            Thank you! Your message has been prepared. Please send it from your email client.
+          </div>
+        }
 
-      <div>
-        <label for="message" class="block text-gray-200 mb-1">Message</label>
-        <textarea id="message" name="message" rows="5" required
-                  class="w-full p-3 bg-gray-800 rounded-lg text-white placeholder-gray-400
-                         focus:outline-none focus:ring-2 focus:ring-accent 
-                         transition duration-300 hover:ring-accent/50"></textarea>
-      </div>
+        <div>
+          <label for="name" class="block text-gray-700 dark:text-gray-200 mb-1.5 text-sm font-medium">
+            Name <span class="text-red-500" aria-hidden="true">*</span>
+          </label>
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            autocomplete="name"
+            class="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-800
+                   border border-gray-200 dark:border-gray-700
+                   text-gray-900 dark:text-white placeholder-gray-400
+                   focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            [attr.aria-invalid]="nameCtrl.invalid && nameCtrl.touched"
+          />
+          @if (nameCtrl.invalid && nameCtrl.touched) {
+            <p class="mt-1 text-xs text-red-500" role="alert">
+              Please enter your name (at least 2 characters).
+            </p>
+          }
+        </div>
 
-      <button type="submit"
-              class="w-full py-3 px-6 bg-gradient-to-r from-indigo-500 to-cyan-500
-                     text-white font-semibold rounded-xl shadow-md
-                     hover:from-indigo-600 hover:to-cyan-600 
-                     transition-all duration-300 transform hover:scale-105">
-        Send Message
-      </button>
+        <div>
+          <label for="email" class="block text-gray-700 dark:text-gray-200 mb-1.5 text-sm font-medium">
+            Email <span class="text-red-500" aria-hidden="true">*</span>
+          </label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+            class="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-800
+                   border border-gray-200 dark:border-gray-700
+                   text-gray-900 dark:text-white placeholder-gray-400
+                   focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+            [attr.aria-invalid]="emailCtrl.invalid && emailCtrl.touched"
+          />
+          @if (emailCtrl.invalid && emailCtrl.touched) {
+            <p class="mt-1 text-xs text-red-500" role="alert">
+              Please enter a valid email address.
+            </p>
+          }
+        </div>
 
-    </form>
+        <div>
+          <label for="message" class="block text-gray-700 dark:text-gray-200 mb-1.5 text-sm font-medium">
+            Message <span class="text-red-500" aria-hidden="true">*</span>
+          </label>
+          <textarea
+            id="message"
+            formControlName="message"
+            rows="5"
+            class="w-full p-3 rounded-lg bg-gray-50 dark:bg-gray-800
+                   border border-gray-200 dark:border-gray-700
+                   text-gray-900 dark:text-white placeholder-gray-400
+                   focus:outline-none focus:ring-2 focus:ring-indigo-500 transition resize-y"
+            [attr.aria-invalid]="messageCtrl.invalid && messageCtrl.touched"
+          ></textarea>
+          @if (messageCtrl.invalid && messageCtrl.touched) {
+            <p class="mt-1 text-xs text-red-500" role="alert">
+              Please enter a message (at least 10 characters).
+            </p>
+          }
+        </div>
 
-    <!-- Social Links -->
-    <div 
-      [class.opacity-0]="!visible()"
-      [class.translate-y-10]="!visible()"
-      class="transition-all duration-1000 delay-400 mt-8 flex justify-center gap-6">
-
-      <a href="https://github.com/butchcanz" target="_blank" rel="noopener"
-         class="bg-white/10 hover:bg-white/20 text-gray-200 p-3 rounded-full 
-                transition transform hover:scale-110 shadow-sm">
-        <img src="assets/logos/github-white-icon.png" alt="GitHub" class="w-6 h-6"/>
-      </a>
-
-      <a href="https://www.linkedin.com/in/butch-ca%C3%B1ada-b87b15117/" target="_blank" rel="noopener"
-         class="bg-white/10 hover:bg-white/20 text-gray-200 p-3 rounded-full 
-                transition transform hover:scale-110 shadow-sm">
-        <img src="assets/logos/linkedin.png" alt="LinkedIn" class="w-6 h-6"/>
-      </a>
-
+        <button
+          type="submit"
+          [disabled]="submitting()"
+          class="w-full py-3 px-6 bg-gradient-to-r from-indigo-500 to-cyan-500
+                 text-white font-semibold rounded-xl shadow-md
+                 hover:from-indigo-600 hover:to-cyan-600
+                 disabled:opacity-60 disabled:cursor-not-allowed
+                 transition-all duration-300 transform hover:scale-[1.02]
+                 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+        >
+          {{ submitting() ? 'Sending...' : 'Send Message' }}
+        </button>
+      </form>
     </div>
-
   </div>
 </section>

@@ -1,0 +1,90 @@
+<footer class="relative bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-white/5">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Brand -->
+      <div>
+        <p
+          class="text-lg font-semibold bg-gradient-to-r from-indigo-500 to-cyan-500 bg-clip-text text-transparent"
+        >
+          {{ personal.name }}
+        </p>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          {{ personal.title }}
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <nav aria-label="Footer navigation">
+        <h2 class="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
+          Quick Links
+        </h2>
+        <ul class="grid grid-cols-2 gap-2" role="list">
+          @for (link of navLinks; track link.sectionId) {
+            <li>
+              <button
+                type="button"
+                (click)="scrollTo(link.sectionId)"
+                class="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition cursor-pointer"
+              >
+                {{ link.label }}
+              </button>
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <!-- Social -->
+      <div>
+        <h2 class="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
+          Connect
+        </h2>
+        <div class="flex gap-3">
+          @for (social of socialLinks; track social.name) {
+            <a
+              [href]="social.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="social.name"
+              class="p-2.5 rounded-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10
+                     hover:bg-gray-50 dark:hover:bg-white/20 transition transform hover:scale-110
+                     focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+            >
+              <app-themed-logo
+                [light]="social.icon"
+                [dark]="social.iconDark"
+                [size]="20"
+                imgClass="w-5 h-5"
+              />
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-10 pt-6 border-t border-gray-200 dark:border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4"
+    >
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        &copy; {{ currentYear() }} {{ personal.name }}. All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- Back to top -->
+  @if (showBackToTop()) {
+    <button
+      type="button"
+      (click)="scrollToTop()"
+      aria-label="Back to top"
+      class="fixed bottom-6 right-6 z-40 p-3 rounded-full
+             bg-gradient-to-r from-indigo-500 to-cyan-500 text-white
+             shadow-lg hover:shadow-indigo-500/30 hover:-translate-y-1
+             transition-all duration-300
+             focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+      </svg>
+    </button>
+  }
+</footer>

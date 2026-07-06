@@ -4,16 +4,13 @@ import { ScrollRevealDirective } from '../directives/scroll-reveal.directive';
 import { PortfolioService } from '../services/portfolio.service';
 
 @Component({
-  selector: 'app-about',
+  selector: 'app-experience',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [SectionHeader, ScrollRevealDirective],
-  templateUrl: './about.html',
+  templateUrl: './experience.html',
 })
-export class About {
+export class Experience {
   private readonly portfolio = inject(PortfolioService);
 
-  readonly personal = this.portfolio.personal;
-  readonly paragraphs = this.portfolio.aboutParagraphs;
-  readonly specializations = this.portfolio.specializations;
-  readonly mission = this.portfolio.mission;
+  readonly experiences = this.portfolio.experiences;
 }

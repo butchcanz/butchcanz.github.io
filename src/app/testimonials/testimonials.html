@@ -1,0 +1,55 @@
+<section
+  id="testimonials"
+  class="relative py-20 md:py-28 px-4 sm:px-6 bg-gray-50 dark:bg-gray-950 overflow-hidden"
+>
+  <div
+    class="absolute -top-20 right-0 w-96 h-96 bg-purple-500/10 blur-3xl rounded-full"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative max-w-6xl mx-auto">
+    <div appScrollReveal>
+      <app-section-header
+        title="Client "
+        highlight="Testimonials"
+        subtitle="What people say about working with me"
+      />
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      @for (item of testimonials; track item.name; let i = $index) {
+        <blockquote
+          appScrollReveal
+          [delay]="i * 100"
+          class="bg-white/70 dark:bg-white/5 backdrop-blur-lg
+                 border border-gray-200/80 dark:border-white/10
+                 rounded-2xl p-6 sm:p-8
+                 transition duration-500 hover:-translate-y-2
+                 hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/5"
+        >
+          <div class="text-4xl text-indigo-500/30 mb-4" aria-hidden="true">"</div>
+          <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6">
+            {{ item.quote }}
+          </p>
+          <footer class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500
+                     flex items-center justify-center text-white font-bold text-sm"
+              aria-hidden="true"
+            >
+              {{ item.name.charAt(0) }}
+            </div>
+            <div>
+              <cite class="not-italic font-semibold text-gray-900 dark:text-white text-sm">
+                {{ item.name }}
+              </cite>
+              <p class="text-xs text-gray-500 dark:text-gray-400">
+                {{ item.role }}, {{ item.company }}
+              </p>
+            </div>
+          </footer>
+        </blockquote>
+      }
+    </div>
+  </div>
+</section>
