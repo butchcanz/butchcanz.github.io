@@ -16,8 +16,8 @@ export const PERSONAL_INFO: PersonalInfo = {
   subtitle: 'AI & Web3 Specialist',
   tagline:
     'Building scalable, secure systems powered by AI, Web, and Mobile technologies — architected for performance, innovation, and long-term business growth.',
-  profileImage: 'assets/my-image.jpg',
-  resumeUrl: 'assets/resume.pdf',
+  profileImage: 'assets/my-picture.png',
+  resumeUrl: 'assets/butch-resume.pdf',
   yearsOfExperience: 3,
   email: 'butch.canada1994@gmail.com',
   phone: '+63 9XX XXX XXXX',
