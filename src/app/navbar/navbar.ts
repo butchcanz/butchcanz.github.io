@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { PortfolioService } from '../services/portfolio.service';
 import { ThemeService } from '../services/theme.service';
@@ -5,6 +6,7 @@ import { ThemeService } from '../services/theme.service';
 @Component({
   selector: 'app-navbar',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgOptimizedImage],
   templateUrl: './navbar.html',
   host: {
     class: 'fixed top-0 left-0 w-full z-50',

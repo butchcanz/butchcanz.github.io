@@ -9,12 +9,18 @@
       <button
         type="button"
         (click)="scrollTo('hero')"
-        class="text-lg sm:text-xl font-semibold tracking-wide cursor-pointer
-               bg-gradient-to-r from-indigo-500 to-cyan-500
-               bg-clip-text text-transparent hover:opacity-80 transition
+        aria-label="Go to home section"
+        class="cursor-pointer hover:opacity-80 transition
                focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded"
       >
-        {{ personal.name }}
+        <img
+          ngSrc="assets/bc-logo.png"
+          [alt]="personal.name + ' logo'"
+          width="144"
+          height="40"
+          priority
+          class="h-10 w-auto sm:h-11"
+        />
       </button>
 
       <!-- Desktop Menu -->
