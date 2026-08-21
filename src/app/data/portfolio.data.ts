@@ -7,7 +7,6 @@ import type {
   SkillCategory,
   SocialLink,
   Stat,
-  Testimonial,
 } from '../models/portfolio.models';
 
 export const PERSONAL_INFO: PersonalInfo = {
@@ -27,7 +26,6 @@ export const PERSONAL_INFO: PersonalInfo = {
 export const STATS: Stat[] = [
   { label: 'Years Experience', value: 3, suffix: '+' },
   { label: 'Projects Completed', value: 10, suffix: '+' },
-  { label: 'Happy Clients', value: 15, suffix: '+' },
   { label: 'Technologies', value: 20, suffix: '+' },
 ];
 
@@ -44,7 +42,6 @@ export const SPECIALIZATIONS: string[] = [
   'AI & LLM Integration',
   'Web3 & Blockchain Applications',
   'API Architecture & Microservices',
-  'Cloud & DevOps',
 ];
 
 export const MISSION =
@@ -118,17 +115,21 @@ export const PROJECTS: Project[] = [
     id: 'ai-chatbot',
     title: 'AI Chatbot Platform',
     description:
-      'A scalable conversational AI system using LLMs and microservices architecture for intelligent customer support and automation.',
+      'A scalable enterprise conversational AI system using LLMs and microservices architecture, with custom knowledge base integration, role-based access, and analytics for intelligent customer support and automation.',
     image: 'assets/projects/chatbot.png',
-    technologies: ['Python', 'FastAPI', 'Docker', 'LLaMA', 'MongoDB'],
+    technologies: ['Python', 'FastAPI', 'Angular', 'Docker', 'LLaMA', 'MongoDB'],
     features: [
       'LLM-powered conversational AI',
       'Microservices architecture',
       'Real-time message streaming',
+      'Custom knowledge base RAG',
+      'Role-based access control',
+      'Analytics dashboard',
+      'Multi-model LLM support',
+      'API rate limiting',
       'Docker containerization',
       'RESTful API design',
     ],
-    githubUrl: 'https://github.com/butchcanz',
   },
   {
     id: 'xterium-wallet',
@@ -144,23 +145,35 @@ export const PROJECTS: Project[] = [
       'Secure key management',
       'dApp browser integration',
     ],
-    githubUrl: 'https://github.com/Xode-DAO/xterium-wallet-v2',
   },
   {
-    id: 'ai-chatbot-alt',
-    title: 'Enterprise AI Assistant',
+    id: 'mobile-pos',
+    title: 'Mobile POS',
     description:
-      'Enterprise-grade AI assistant with custom knowledge base integration, role-based access, and analytics dashboard.',
-    image: 'assets/projects/ai-chatbot.png',
-    technologies: ['Python', 'FastAPI', 'Angular', 'Docker', 'LLaMA'],
+      'Mobile POS is a mobile point-of-sale system for managing sales, inventory, customers, payments, and real-time business transactions efficiently.',
+    image: 'assets/projects/mobile-pos.png',
+    technologies: ['Ionic Vue', 'Vue.js', 'SQLite', 'Capacitor'],
     features: [
-      'Custom knowledge base RAG',
-      'Role-based access control',
-      'Analytics dashboard',
-      'Multi-model LLM support',
-      'API rate limiting',
+      'Sales management',
+      'Inventory management',
+      'Payment processing',
+      'Real-time business transactions',
     ],
-    githubUrl: 'https://github.com/butchcanz',
+  },
+  {
+    id: 'cloud-pos',
+    title: 'Cloud POS',
+    description:
+      'Cloud POS is a cloud-based point-of-sale system for managing sales, inventory, customers, branches, and syncing sales from mobile POS to the cloud in real time business operations.',
+    image: 'assets/projects/cloud-pos.png',
+    technologies: ['Angular', 'Nestjs', 'PostgreSQL'],
+    features: [
+      'Multi-branch management',
+      'Real-time sales syncing',
+      'Inventory tracking',
+      'Generate reports',
+      'Secure and scalable',
+    ],
   },
 ];
 
@@ -168,21 +181,21 @@ export const EXPERIENCES: Experience[] = [
   {
     company: 'Blockspace Corporation',
     position: 'Software Engineer',
-    startDate: '2023',
+    startDate: 'Dec - 2022',
     endDate: 'Present',
     responsibilities: [
-      'Developed enterprise web applications and backend services.',
-      'Implemented secure mobile wallets with biometric authentication, facial recognition, PIN-based access, and reliable transaction processing.',
-      'Designed database schemas and optimized query performance for high-traffic systems.',
-      'Implemented CI/CD pipelines and containerized deployments.',
+      'Developed Xterium Wallet a cross-platform Web3 wallet using Ionic Angular and Capacitor, with TypeScript and Polkadot API, providing secure Polkadot ecosystem interactions, account management, biometric and PIN authentication, transaction signing, and dApp connectivity.',
+      'Developed Jina AI Chatbot AI-powered chatbots and agents using Angular and Python FastAPI, with MongoDB, LLaMA, and Retrieval-Augmented Generation (RAG) to provide accurate, contextual, and domain-specific responses through natural language understanding.',
+      'Developed a mobile point-of-sale system using Ionic Vue and Capacitor, with Vue.js and SQLite, for managing sales, inventory, customers, payments, and business transactions with efficient local data storage and offline support.',
+      'Developed a cloud-based point-of-sale system using Angular and NestJS, with TypeScript, PostgreSQL, and REST API, for managing sales, inventory, customers, and multiple branches, including real-time synchronization of sales data between the Mobile POS and cloud platform.',
     ],
-    technologies: ['TypeScript', 'NestJS', 'MySQL', 'Docker', 'GitHub','Capacitor', 'NoSQL', 'MongoDB', 'REST APIs', 'Microservices'],
+    technologies: ['Angular', 'Ionic', 'Vue.js', 'NestJS', 'PostgreSQL', 'SQLite', 'Docker', 'GitHub', 'Capacitor', 'TypeScript', 'Polkadot API', 'LLaMA', 'MongoDB', 'REST APIs', 'Microservices'],
   },
   {
     company: 'Freelance / Independent',
     position: 'Full Stack Developer',
-    startDate: '2022',
-    endDate: '2024',
+    startDate: 'Feb - 2023',
+    endDate: 'July - 2023',
     responsibilities: [
       'Delivered end-to-end web and mobile solutions for diverse clients across fintech, AI, and Web3 domains.',
       'Architected scalable REST APIs and microservices using Python, FastAPI, and NestJS.',
@@ -190,6 +203,16 @@ export const EXPERIENCES: Experience[] = [
       'Integrated AI/LLM capabilities into production applications.',
     ],
     technologies: ['Angular', 'Python', 'FastAPI', 'Ionic', 'Docker', 'MongoDB', 'NoSQL', 'Vue.js', 'REST APIs', 'Microservices'],
+  },
+  {
+    company: 'Human Incubator Inc.',
+    position: 'Business Analyst',
+    startDate: 'July - 2022',
+    endDate: 'Dec - 2022',
+    responsibilities: [
+      'Conducted comprehensive product testing to identify defects, deficiencies, and potential areas for improvement, ensuring high standards of product quality and reliability. Investigated quality issues and collaborated with cross-functional teams to implement effective solutions that enhanced product performance and customer satisfaction. Provided technical support for functional and software-related issues, performed root-cause analysis, and contributed to timely issue resolution. Evaluated and identified bottlenecks within quality assurance processes and recommended process improvements to increase testing efficiency, product stability, and overall quality.',
+    ],
+    technologies: ['Python Selenium', 'Selenium WebDriver', 'Software Testing'],
   },
 ];
 
@@ -232,30 +255,6 @@ export const SERVICES: Service[] = [
   },
 ];
 
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    name: 'Maria Santos',
-    role: 'Product Manager',
-    company: 'FinTech Startup',
-    quote:
-      'Butch delivered an exceptional mobile wallet application that exceeded our expectations. His attention to security and user experience is outstanding.',
-  },
-  {
-    name: 'James Rodriguez',
-    role: 'CTO',
-    company: 'AI Solutions Inc.',
-    quote:
-      'Working with Butch on our AI chatbot platform was a game-changer. He architected a scalable system that handles thousands of concurrent users flawlessly.',
-  },
-  {
-    name: 'Sarah Chen',
-    role: 'Lead Developer',
-    company: 'Web3 Ventures',
-    quote:
-      'Butch brings deep expertise in both traditional and Web3 development. His code quality and communication made our collaboration seamless.',
-  },
-];
-
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'GitHub',
@@ -277,6 +276,5 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Projects', sectionId: 'projects' },
   { label: 'Experience', sectionId: 'experience' },
   { label: 'Services', sectionId: 'services' },
-  { label: 'Testimonials', sectionId: 'testimonials' },
   { label: 'Contact', sectionId: 'contact' },
 ];

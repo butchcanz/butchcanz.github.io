@@ -168,7 +168,7 @@
       </div>
 
       <!-- Stats -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-gray-200/60 dark:border-white/10">
+      <div class="flex flex-wrap justify-center gap-8 sm:gap-12 pt-6 border-t border-gray-200/60 dark:border-white/10">
         @for (stat of stats; track stat.label) {
           <app-stat-counter
             [value]="stat.value"

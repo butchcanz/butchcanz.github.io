@@ -6,7 +6,6 @@ import { TechStack } from '../tech-stack/tech-stack';
 import { Projects } from '../projects/projects';
 import { Experience } from '../experience/experience';
 import { Services } from '../services/services';
-import { Testimonials } from '../testimonials/testimonials';
 import { Contact } from '../contact/contact';
 import { Footer } from '../footer/footer';
 
@@ -21,7 +20,6 @@ import { Footer } from '../footer/footer';
     Projects,
     Experience,
     Services,
-    Testimonials,
     Contact,
     Footer,
   ],

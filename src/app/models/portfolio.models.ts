@@ -56,14 +56,6 @@ export interface Service {
   icon: string;
 }
 
-export interface Testimonial {
-  name: string;
-  role: string;
-  company: string;
-  quote: string;
-  avatar?: string;
-}
-
 export interface SocialLink {
   name: string;
   url: string;

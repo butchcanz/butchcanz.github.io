@@ -11,7 +11,6 @@ import {
   SOCIAL_LINKS,
   SPECIALIZATIONS,
   STATS,
-  TESTIMONIALS,
 } from '../data/portfolio.data';
 
 @Injectable({ providedIn: 'root' })
@@ -25,7 +24,6 @@ export class PortfolioService {
   readonly projects = PROJECTS;
   readonly experiences = EXPERIENCES;
   readonly services = SERVICES;
-  readonly testimonials = TESTIMONIALS;
   readonly socialLinks = SOCIAL_LINKS;
   readonly navLinks = NAV_LINKS;
 
